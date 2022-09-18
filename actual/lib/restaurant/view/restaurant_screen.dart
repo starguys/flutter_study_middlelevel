@@ -69,7 +69,7 @@ class RestaurantScreen extends StatelessWidget {
                     );
                   },
                   separatorBuilder: (_, index) {
-                    return SizedBox(
+                    return const SizedBox(
                       height: 16.0,
                     );
                   },
