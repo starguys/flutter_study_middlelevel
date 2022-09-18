@@ -1,8 +1,6 @@
 import 'package:actual/common/const/colors.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter/material.dart';
-
 class CustomTextFormField extends StatelessWidget {
   final String? hintText;
   final String? errorText;
@@ -21,7 +19,7 @@ class CustomTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final baseBorder = OutlineInputBorder(
+    const baseBorder = OutlineInputBorder(
       borderSide: BorderSide(
         color: INPUT_BORDER_COLOR,
         width: 1.0,
