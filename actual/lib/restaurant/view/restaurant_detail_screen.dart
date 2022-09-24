@@ -43,14 +43,14 @@ class RestaurantDetailScreen extends StatelessWidget {
           }
 
           final item = RestaurantDetailModel.fromJson(
-            json: snapshot.data!,
+            snapshot.data!,
           );
 
           return CustomScrollView(
             slivers: [
               renderTop(model: item),
               renderLabel(),
-              renderProduct(),
+              renderProduct(products: item.products),
             ],
           );
         },
@@ -69,18 +69,24 @@ class RestaurantDetailScreen extends StatelessWidget {
     );
   }
 
-  SliverPadding renderProduct() {
+  SliverPadding renderProduct({
+    required List<RestaurantProductModel> products,
+  }) {
     return SliverPadding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       sliver: SliverList(
         delegate: SliverChildBuilderDelegate(
           (context, index) {
-            return const Padding(
-              padding: EdgeInsets.only(top: 16.0),
-              child: ProductCard(),
+            final model = products[index];
+
+            return Padding(
+              padding: const EdgeInsets.only(top: 16.0),
+              child: ProductCard.fromModel(
+                model: model,
+              ),
             );
           },
-          childCount: 10,
+          childCount: products.length,
         ),
       ),
     );
